@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackServe = require('webpack-serve/package.json');
 
-const waitPageHTML = fs.readFileSync(path.resolve(__dirname, './waitPage.html'))
+const waitPageHTML = fs.readFileSync(path.resolve(__dirname, 'waitpage.html'), 'utf8')
   .replace(/{{WP}}/g, webpack.version)
   .replace(/{{WPS}}/g, webpackServe.version);
 
