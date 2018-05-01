@@ -1,7 +1,7 @@
 [![npm version](https://badge.fury.io/js/webpack-serve-waitpage.svg)](https://badge.fury.io/js/webpack-serve-waitpage)
 
 # webpack-serve-waitpage
-Webpack progress wait page for webpack-serve
+Webpack progress wait page for [webpack-serve](https://github.com/webpack-contrib/webpack-serve)
 
 Instead of waiting for webpack to finish compiling, see a nice progress wait page.
 
