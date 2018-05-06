@@ -7,6 +7,18 @@ Instead of waiting for webpack to finish compiling, see a nice progress wait pag
 
 ![screenshot](screenshot.png)
 
+## Installation
+
+npm
+```
+npm install -D webpack-serve-waitpage
+```
+
+yarn
+```
+yarn add -D webpack-serve-waitpage
+```
+
 ## Themes
 
 There are other themes to choose from:
