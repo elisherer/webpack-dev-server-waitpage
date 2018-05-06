@@ -1,0 +1,86 @@
+<% var percent = Math.round(100 * progress[0]); %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="IE=Edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="refresh" content="1"/>
+  <title><%= title %></title>
+  <style>
+    html, body {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      font: 16px -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+      background-color: #F5F5F5; /* Grey 100 */
+    }
+    .border {
+      background: #607D8B; /* Blue Grey 500 */
+      color: #ECEFF1; /* Blue Grey 50 */
+      text-align: center;
+      padding-top: 20px;
+      font-size: 30px;
+      height: 120px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.26);
+    }
+    .card {
+      position: absolute;
+      width: 400px;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      padding: 20px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.26);
+    }
+    .loader {
+      position: relative;
+      left: 37%;
+    }
+    .loader circle {
+      fill: transparent;
+      stroke-width: 10px;
+      stroke-dasharray: 250;
+    }
+    .loader circle.progress {
+      stroke: #03A9F4; /* Light Blue 500 */
+      stroke-dashoffset: <%= 250 + Math.round(250 * progress[0]) %>;
+    }
+    .loader circle.bar {
+      stroke: #EEEEEE; /* Grey 200 */
+    }
+    .loader text {
+      text-align: center;
+      font: 20px -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    }
+    .message {
+      text-align: center;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="border">Development server</div>
+<div class="card">
+  <div>Using:</div>
+  <ul>
+    <li><b>webpack</b> v<%= webpackVersion %></li>
+    <li><b>webpack-serve</b> v<%= webpackServeVersion %></li>
+  </ul>
+  <p>Redirecting to <a id="url" href="#"></a></p>
+  <script>var u = document.getElementById('url'); u.href = location.href; u.innerText = location.href;</script>
+  <h4><i>Your application is building...</i></h4>
+  <svg class="loader" height="100" width="100">
+    <circle class="bar" cx="50" cy="50" r="40"></circle>
+    <circle class="progress" cx="50" cy="50" r="40"></circle>
+    <text x="53" y="55" text-anchor="middle"><%= percent %>%</text>
+  </svg>
+  <div class="message"><b><%= progress[1] || '' %></b></div>
+  <% for (var i = 2 ; i < progress.length; i++) { %>
+  <div class="message"><%= progress[i] || '' %></div>
+  <% } %>
+</div>
+</body>
+</html>
