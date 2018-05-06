@@ -13,6 +13,7 @@ There are other themes to choose from:
 
 Dark
 ![Dark](screenshot3.png)
+
 Material
 ![Material](screenshot2.png)
 
