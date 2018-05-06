@@ -12,9 +12,11 @@ Instead of waiting for webpack to finish compiling, see a nice progress wait pag
 There are other themes to choose from:
 
 Dark
+
 ![Dark](screenshot3.png)
 
 Material
+
 ![Material](screenshot2.png)
 
 ### *** And you can also create your own! ***
@@ -67,7 +69,7 @@ You can clone this repository and use the script `test` to help you develop a ne
 #### Template data object
 
 The `ejs` renderer gets a data object with the following values:
-```json
+```js
 {
     title: "Development Server", // the window title
     webpackVersion: "4.0.0", // currently used webpack version
