@@ -66,7 +66,7 @@ module.exports.serve = {
 | Option |Description|Type|Default Value|
 |--------|-----------|----|-------------|
 |`title`|The window title|String|`"Development Server"`|
-|`theme`|Use a predefined theme (Options are: `"default"`, `"dark"`)|String|`"default"`|
+|`theme`|Use a predefined theme (Options are: `"default"`, `"dark"`, `"material"`)|String|`"default"`|
 |`template`|Provide an alternative `ejs` template (overrides the `theme` option)|String|The default one|
 
 * Any other option would be passed to the global scope of the ejs template
