@@ -1,4 +1,3 @@
-<% var percent = Math.round(100 * progress[0]); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,26 +34,33 @@
       padding: 20px;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.26);
     }
-    .loader {
+    .building {
+      font-style: italic;
+      font-weight: bold;
+    }
+<% for (var i = 0 ; i < progress.length ; i++) { %>
+    .loader--<%= i %> {
+      margin-top: 20px;
       position: relative;
       left: 37%;
     }
-    .loader circle {
+    .loader--<%= i %> circle {
       fill: transparent;
       stroke-width: 10px;
       stroke-dasharray: 250;
     }
-    .loader circle.progress {
+    .loader--<%= i %> circle.progress {
       stroke: #03A9F4; /* Light Blue 500 */
-      stroke-dashoffset: <%= 250 + Math.round(250 * progress[0]) %>;
+      stroke-dashoffset: <%= 250 + Math.round(250 * progress[i][0]) %>;
     }
-    .loader circle.bar {
+    .loader--<%= i %> circle.bar {
       stroke: #EEEEEE; /* Grey 200 */
     }
-    .loader text {
+    .loader--<%= i %> text {
       text-align: center;
       font: 20px -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
     }
+<% } %>
     .message {
       text-align: center;
       padding: 0;
@@ -71,15 +77,17 @@
   </ul>
   <p>Redirecting to <a id="url" href="#"></a></p>
   <script>var u = document.getElementById('url'); u.href = location.href; u.innerText = location.href;</script>
-  <h4><i>Your application is building...</i></h4>
-  <svg class="loader" height="100" width="100">
+  <div class="building"><b><i>Your application is building...</i></b></div>
+  <% for (var i = 0 ; i < progress.length ; i++) { %>
+  <svg class="loader--<%= i %>" height="100" width="100">
     <circle class="bar" cx="50" cy="50" r="40"></circle>
     <circle class="progress" cx="50" cy="50" r="40"></circle>
-    <text x="53" y="55" text-anchor="middle"><%= percent %>%</text>
+    <text x="53" y="55" text-anchor="middle"><%= Math.round(100 * progress[i][0]) %>%</text>
   </svg>
-  <div class="message"><b><%= progress[1] || '' %></b></div>
-  <% for (var i = 2 ; i < progress.length; i++) { %>
-  <div class="message"><%= progress[i] || '' %></div>
+  <div class="message"><b><%= progress[0][1] || '' %></b></div>
+  <% for (var m = 2 ; m < progress[i].length; m++) { %>
+  <div class="message"><%= progress[i][m] || '' %></div>
+  <% } %>
   <% } %>
 </div>
 </body>

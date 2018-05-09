@@ -3,8 +3,9 @@ const path = require('path');
 const ejs = require('ejs');
 const webpack = require('webpack');
 const webpackServe = require('webpack-serve/package.json');
+const SlowDownWebpackPlugin = require('./SlowDownWebpackPlugin');
 
-module.exports = (indexFilename) => {
+module.exports = (wsOptions, indexFilename, seconds = 2) => {
   const indexFile = path.resolve(__dirname, '..', indexFilename);
 
   const state = {
@@ -25,21 +26,24 @@ module.exports = (indexFilename) => {
     state.progress = (state.progress + 0.1) % 1;
   }, 1000);
 
+  // delay
+  const compilers = wsOptions.compiler.compilers || [wsOptions.compiler];
+  for (let i = 0 ; i < compilers.length ; i++) {
+    const slowDownPlugin = new SlowDownWebpackPlugin(seconds);
+    slowDownPlugin.apply(compilers[i]);
+  }
+
   return async (ctx/*, next*/) => {
     const total = 200, active = Math.round(total * state.progress);
-    try {
-      ctx.type = 'html';
-      ctx.body = ejs.render(state.template, {
-        title: 'Development Server (Test)',
-        webpackVersion: webpack.version,
-        webpackServeVersion: webpackServe.version,
-        progress: [state.progress, 'Building Modules', active + '/200 modules', active + ' active', './' + indexFilename]
-      });
-    } catch (err) {
-      console.error('>> ' + err);
-      if (err.status !== 404) {
-        throw err
-      }
-    }
+    ctx.type = 'html';
+    ctx.body = ejs.render(state.template, {
+      title: 'Development Server (Test)',
+      webpackVersion: webpack.version,
+      webpackServeVersion: webpackServe.version,
+      progress: [
+        [state.progress, 'Building Modules', active + '/200 modules', active + ' active', './' + indexFilename],
+        //[(state.progress + 0.1) % 1, 'Building Modules', (active + 1) + '/200 modules', (active + 1) + ' active', './' + indexFilename] // test for multiple compilers
+      ]
+    });
   }
 };

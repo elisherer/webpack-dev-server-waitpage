@@ -19,43 +19,23 @@ yarn
 yarn add -D webpack-serve-waitpage
 ```
 
-## Themes
-
-There are other themes to choose from:
-
-Dark
-
-![Dark](screenshot3.png)
-
-Material
-
-![Material](screenshot2.png)
-
-### *** And you can also create your own! ***
-See **Developing a new template** below
-
 ## Usage
 
 #### webpack.config.js
+
+Inside the `add` option function of `serve` add the following line.
+You can provide options for the middleware (as 2nd parameter) `(i.e. app.use(webpackServeWaitpage(options, {})))` or ommit it as in the example below:
+
 ```js
 const webpackServeWaitpage = require('./libs/webpack-serve-waitpage');
-
-...
-  plugins: [
-
-    // inside the plugins section of the config add the following
-    webpackServeWaitpage.plugin,
-  ],
 
 ...
 
 module.exports.serve = {
   add: (app, middleware, options) => {
+    ...
 
-    // inside the add option function of serve add the following line
-    // you can provide options for the middleware, or ommit it as below:
-    app.use(webpackServeWaitpage.middleware());
-
+    app.use(webpackServeWaitpage(options)); // * Be sure to pass the options argument from the arguments
   }
 };
 
@@ -70,6 +50,21 @@ module.exports.serve = {
 |`template`|Provide an alternative `ejs` template (overrides the `theme` option)|String|The default one|
 
 * Any other option would be passed to the global scope of the ejs template
+
+
+## Themes
+
+There are other themes to choose from:
+
+Dark
+
+![Dark](screenshot3.png)
+
+Material
+
+![Material](screenshot2.png)
+
+### *** And you can also create your own! ***
 
 ### Developing a new template
 
@@ -86,12 +81,14 @@ The `ejs` renderer gets a data object with the following values:
     title: "Development Server", // the window title
     webpackVersion: "4.0.0", // currently used webpack version
     webpackServeVersion: "1.0.0", // currently used webpack-serve version
-    progress: [
+    progress: [ // number of object as number of webpack configurations
+      [
         0.5, // progress between 0 to 1
         "message", // message from webpack
         "0/1000", // modules progress message
         "0 active", // active modules message
         "<some path>" // path of current module
+      ]
     ]
 }
 ```

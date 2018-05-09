@@ -2,22 +2,6 @@ const path = require('path');
 const webpackServeWaitpage = require('./index');
 const testMiddleware = require('./test/testMiddleware');
 
-function SlowDownWebpackPlugin(seconds = 5) {
-  this.seconds = seconds;
-}
-SlowDownWebpackPlugin.prototype.apply = function(compiler) {
-  compiler.hooks.make.tapAsync("SlowDownWebpackPlugin", async (compilation, callback) => {
-    let progress = 0;
-    let interval = setInterval(async () => {
-      progress += (this.seconds / 100);
-      if (progress >= 1) {
-        clearInterval(interval);
-        callback();
-      }
-    }, 1000);
-  });
-};
-
 module.exports = {
   mode: 'development',
   context: __dirname,
@@ -25,23 +9,21 @@ module.exports = {
   output: {
     filename: './output.js',
     path: path.resolve(__dirname)
-  },
-  plugins: [
-    new SlowDownWebpackPlugin(),
-    webpackServeWaitpage.plugin
-  ],
+  }
 };
 
 module.exports.serve = {
   add: (app, middleware, options) => {
 
-    // Use this to test an actual usage (you can change the seconds setting above to get more time)
-    app.use(webpackServeWaitpage.middleware({
+    // Use this to test an actual usage (you can change the seconds setting below to get more time)
+    app.use(webpackServeWaitpage(options, {
       title: 'Development Server (Dev)',
       theme: 'default'
     }));
 
-    // Use this to only test the template using mock data
-    app.use(testMiddleware('index.ejs'));
+    app.use(testMiddleware(options,
+      'material.ejs',   // Use this to only test the template using mock data
+      5                 // Amount of seconds to delay the completion of compilation
+    ));
   }
 };
