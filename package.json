@@ -1,7 +1,7 @@
 {
   "name": "webpack-serve-waitpage",
   "description": "Webpack progress wait page for webpack-serve",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "repository": "https://github.com/elisherer/webpack-serve-waitpage.git",
   "author": "Eli Sherer <eli.sherer@gmail.com>",
