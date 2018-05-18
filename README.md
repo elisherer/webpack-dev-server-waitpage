@@ -33,9 +33,12 @@ const webpackServeWaitpage = require('./libs/webpack-serve-waitpage');
 
 module.exports.serve = {
   add: (app, middleware, options) => {
-    ...
 
     app.use(webpackServeWaitpage(options)); // * Be sure to pass the options argument from the arguments
+
+    // Make sure the usage of webpack-serve-waitpage will be before the following commands if exists
+    // middleware.webpack();
+    // middleware.content()
   }
 };
 
