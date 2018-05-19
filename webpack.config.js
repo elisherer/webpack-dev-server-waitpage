@@ -1,5 +1,5 @@
 const path = require('path');
-const webpackServeWaitpage = require('./index');
+const webpackServeWaitpage = require('./lib');
 const testMiddleware = require('./test/testMiddleware');
 
 module.exports = {

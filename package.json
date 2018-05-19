@@ -1,8 +1,8 @@
 {
   "name": "webpack-serve-waitpage",
   "description": "Webpack progress wait page for webpack-serve",
-  "version": "0.3.0",
-  "main": "index.js",
+  "version": "1.0.0",
+  "main": "lib/index.js",
   "repository": "https://github.com/elisherer/webpack-serve-waitpage.git",
   "author": "Eli Sherer <eli.sherer@gmail.com>",
   "scripts": {
@@ -12,20 +12,17 @@
   "files": [
     "package.json",
     "README.md",
-    "index.js",
-    "default.ejs",
-    "dark.ejs",
-    "material.ejs"
+    "lib/"
   ],
   "dependencies": {
     "ejs": "^2.6.1"
   },
   "peerDependencies": {
     "webpack": "^4.0.0",
-    "webpack-serve": "^0.3.1"
+    "webpack-serve": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "^4.0.0",
-    "webpack-serve": "^0.3.1"
+    "webpack-serve": "^1.0.0"
   }
 }

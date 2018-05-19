@@ -6,7 +6,7 @@ const webpackServe = require('webpack-serve/package.json');
 const SlowDownWebpackPlugin = require('./SlowDownWebpackPlugin');
 
 module.exports = (wsOptions, indexFilename, seconds = 2) => {
-  const indexFile = path.resolve(__dirname, '..', indexFilename);
+  const indexFile = path.resolve(__dirname, '..', 'lib', indexFilename);
 
   const state = {
     progress: 0,

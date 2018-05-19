@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.0] - 2018-05-19
+- First major release
+- Added `disableWhenValid` option (as default true). This will stop the wait page from appearing after the application started.
+- Updated the peer dependency of webpack-serve to v1
+- Internal project reorganization
+
 ## [0.3.0] - 2018-05-09
 **Breaking Change** - The library is now only a middleware, use it with the provided options of `add` with the optional additional middleware options (see README.md for details).
 - No need for adding a plugin anymore (happens from within the middleware initialization)

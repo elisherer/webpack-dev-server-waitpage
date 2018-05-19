@@ -50,9 +50,10 @@ module.exports.serve = {
 |--------|-----------|----|-------------|
 |`title`|The window title|String|`"Development Server"`|
 |`theme`|Use a predefined theme (Options are: `"default"`, `"dark"`, `"material"`)|String|`"default"`|
-|`template`|Provide an alternative `ejs` template (overrides the `theme` option)|String|The default one|
+|`template`|Provide an alternative `ejs` template (overrides the `theme` option)|String|The predefined template used by the `theme` option|
+|`disableWhenValid`|Whether to stop showing the waitPage after the first compilation (otherwise, will continue to show on hot full page reloads)|Boolean|`true` 
 
-* Any other option would be passed to the global scope of the ejs template
+* These and any other option would be passed to the global scope of the ejs template.
 
 
 ## Themes
