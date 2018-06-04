@@ -23,26 +23,26 @@ yarn add -D webpack-serve-waitpage
 
 #### webpack.config.js
 
-Inside the `add` option function of `serve` add the following line.
-You can provide options for the middleware (as 2nd parameter) `(i.e. app.use(webpackServeWaitpage(options, {})))` or ommit it as in the example below:
+Inside the `add` option function of `serve` enter the following line as in the example below:
 
 ```js
-const webpackServeWaitpage = require('./libs/webpack-serve-waitpage');
+const webpackServeWaitpage = require('webpack-serve-waitpage');
 
 ...
 
 module.exports.serve = {
   add: (app, middleware, options) => {
-
-    app.use(webpackServeWaitpage(options)); // * Be sure to pass the options argument from the arguments
+    // Be sure to pass the options argument from the arguments
+    app.use(webpackServeWaitpage(options));
 
     // Make sure the usage of webpack-serve-waitpage will be before the following commands if exists
     // middleware.webpack();
-    // middleware.content()
+    // middleware.content();
   }
 };
 
 ```
+You can also provide options object for the middleware as a second parameter (i.e. `app.use(webpackServeWaitpage(options, {})`) or omit it.
 
 #### Middleware options
 
