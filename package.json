@@ -19,7 +19,7 @@
   },
   "peerDependencies": {
     "webpack": "^4.0.0",
-    "webpack-serve": "^1.0.0"
+    "webpack-serve": "^1.0.0 || ^2.0.0"
   },
   "devDependencies": {
     "webpack": "^4.0.0",
