@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2018-08-12935
+- Add TypeScript definitions (#5)
+- Add some JSDoc and some newlines in the code.
+
 ## [1.0.1] - 2018-07-21
 - Fix require path and rephrasing (#2)
 - Break long pathnames to prevent overflow and add spacing between messages for better readability (#3)

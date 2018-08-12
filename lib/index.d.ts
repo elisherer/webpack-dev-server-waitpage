@@ -1,5 +1,10 @@
-import * as koa from "koa";
-import * as serve from "webpack-serve";
+interface WebpackServeOptions {
+    compiler: Object;
+}
+
+interface KoaMiddleware {
+    (context, next) : void
+}
 
 interface Options {
     title?: string;
@@ -8,6 +13,6 @@ interface Options {
     disableWhenValid?: boolean;
 }
 
-declare function makeWaitPage(wsOptions: serve.Options, options?: Options): koa.Middleware;
+declare function webpackServeWaitpage(wsOptions: WebpackServeOptions, options?: Options) : KoaMiddleware;
 
-export = makeWaitPage;
+export = webpackServeWaitpage;
