@@ -1,7 +1,7 @@
-[![npm version](https://badge.fury.io/js/webpack-serve-waitpage.svg)](https://badge.fury.io/js/webpack-serve-waitpage)
+[![npm version](https://badge.fury.io/js/webpack-dev-server-waitpage.svg)](https://badge.fury.io/js/webpack-dev-server-waitpage)
 
-# webpack-serve-waitpage
-Webpack progress wait page for [webpack-serve](https://github.com/webpack-contrib/webpack-serve)
+# webpack-dev-server-waitpage
+Webpack progress wait page for [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 
 Instead of waiting for webpack to finish compiling, see a nice progress wait page.
 
@@ -11,38 +11,36 @@ Instead of waiting for webpack to finish compiling, see a nice progress wait pag
 
 npm
 ```
-npm install -D webpack-serve-waitpage
+npm install -D webpack-dev-server-waitpage
 ```
 
 yarn
 ```
-yarn add -D webpack-serve-waitpage
+yarn add -D webpack-dev-server-waitpage
 ```
 
 ## Usage
 
 #### webpack.config.js
 
-Inside the `add` option function of `serve` enter the following line as in the example below:
+Inside the `before` option function of `devServer` enter the following line as in the example below:
 
 ```js
-const webpackServeWaitpage = require('webpack-serve-waitpage');
+const webpackDevServerWaitpage = require('webpack-dev-server-waitpage');
 
 ...
 
-module.exports.serve = {
-  add: (app, middleware, options) => {
-    // Be sure to pass the options argument from the arguments
-    app.use(webpackServeWaitpage(options));
+  devServer: {
+    before: (app, server) => {
 
-    // Make sure the usage of webpack-serve-waitpage will be before the following commands if exists
-    // middleware.webpack();
-    // middleware.content();
+      // Be sure to pass the server argument from the arguments
+      app.use(webpackDevServerWaitpage(server));
+
+    }
   }
-};
 
 ```
-You can also provide options object for the middleware as a second parameter (i.e. `app.use(webpackServeWaitpage(options, {})`) or omit it.
+You can also provide options object for the middleware as a second parameter (i.e. `app.use(webpackDevServerWaitpage(options, {})`) or omit it.
 
 #### Middleware options
 
@@ -84,7 +82,7 @@ The `ejs` renderer gets a data object with the following values:
 {
     title: "Development Server", // the window title
     webpackVersion: "4.0.0", // currently used webpack version
-    webpackServeVersion: "1.0.0", // currently used webpack-serve version
+    webpackDevServerVersion: "1.0.0", // currently used webpack-dev-server version
     progress: [ // number of object as number of webpack configurations
       [
         0.5, // progress between 0 to 1

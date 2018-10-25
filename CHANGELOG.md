@@ -1,7 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.2] - 2018-08-12935
+## [1.0.0] - 2018-10-25 (renamed to webpack-dev-server-waitpage)
+- Since `webpack-serve` is deprecated, the library migrated to the maintained library `webpack-dev-server`.
+- Library renamed to `webpack-dev-server-waitpage`
+
+## [1.0.2] - 2018-08-12
 - Add TypeScript definitions (#8)
 - Add some JSDoc and some newlines in the code.
 
