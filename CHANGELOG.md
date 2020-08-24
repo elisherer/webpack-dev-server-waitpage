@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2020-08-24
+- Add support for webpack 5 (see the latest setup instructions, also relevant to the latest v4)
+
 ## [1.0.0] - 2018-10-25 (renamed to webpack-dev-server-waitpage)
 - Since `webpack-serve` is deprecated, the library migrated to the maintained library `webpack-dev-server`.
 - Library renamed to `webpack-dev-server-waitpage`

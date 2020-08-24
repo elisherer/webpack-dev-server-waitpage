@@ -12,7 +12,8 @@ module.exports = {
     path: path.resolve(__dirname)
   },
   plugins: [
-    new SlowDownWebpackPlugin(20) // Amount of seconds to delay the completion of compilation
+    webpackDevServerWaitpage.plugin(),
+    new SlowDownWebpackPlugin(1) // Amount of seconds to delay the completion of compilation
   ],
   devServer: {
     before: (app, server) => {

@@ -23,7 +23,25 @@ yarn add -D webpack-dev-server-waitpage
 
 #### webpack.config.js
 
-Inside the `before` option function of `devServer` enter the following line as in the example below:
+1 - Add the plugin to the plugins array:
+```js
+const webpackDevServerWaitpage = require('webpack-dev-server-waitpage');
+
+...
+  plugins: [
+     ...
+
+     webpackDevServerWaitpage.plugin(),
+  
+     ...
+  ] 
+
+...
+```
+
+**Note:** Arguments for the `plugin` method are the same as the object that can be passed to `ProgressPlugin` besides the `handler` function which is used internally (it is best to leave it blank).
+
+2 - Inside the `before` option function of `devServer` enter the following line as in the example below:
 
 ```js
 const webpackDevServerWaitpage = require('webpack-dev-server-waitpage');
