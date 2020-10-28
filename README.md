@@ -68,7 +68,7 @@ You can also provide options object for the middleware as a second parameter (i.
 |`theme`|Use a predefined theme (Options are: `"default"`, `"dark"`, `"material"`)|`String`|`"default"`|
 |`template`|Provide an alternative `ejs` template (overrides the `theme` option)|`String`|The predefined template used by the `theme` option|
 |`disableWhenValid`|Whether to stop showing the waitPage after the first compilation (otherwise, will continue to show on hot full page reloads)|`Boolean`|`true` 
-|`ignore`|Rules to ignore certain url or requests|`string|RegExp|function|Array`
+|`ignore`|Rules to ignore certain url or requests. (String and RegExp are matched vs req.url, while Functions gets the express request as argument)|`string / RegExp / Function<Request>:Boolean / Array<string/RegExp/Function>`|`null`
 
 * These and any other option would be passed to the global scope of the ejs template.
 
