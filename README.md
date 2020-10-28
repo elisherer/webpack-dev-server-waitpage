@@ -64,10 +64,11 @@ You can also provide options object for the middleware as a second parameter (i.
 
 | Option |Description|Type|Default Value|
 |--------|-----------|----|-------------|
-|`title`|The window title|String|`"Development Server"`|
-|`theme`|Use a predefined theme (Options are: `"default"`, `"dark"`, `"material"`)|String|`"default"`|
-|`template`|Provide an alternative `ejs` template (overrides the `theme` option)|String|The predefined template used by the `theme` option|
-|`disableWhenValid`|Whether to stop showing the waitPage after the first compilation (otherwise, will continue to show on hot full page reloads)|Boolean|`true` 
+|`title`|The window title|`String`|`"Development Server"`|
+|`theme`|Use a predefined theme (Options are: `"default"`, `"dark"`, `"material"`)|`String`|`"default"`|
+|`template`|Provide an alternative `ejs` template (overrides the `theme` option)|`String`|The predefined template used by the `theme` option|
+|`disableWhenValid`|Whether to stop showing the waitPage after the first compilation (otherwise, will continue to show on hot full page reloads)|`Boolean`|`true` 
+|`ignore`|Rules to ignore certain url or requests|`string|RegExp|function|Array`
 
 * These and any other option would be passed to the global scope of the ejs template.
 

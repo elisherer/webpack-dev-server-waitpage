@@ -25,7 +25,7 @@ module.exports = {
       }));
 
       // Use this to only test the template using mock data
-      app.use(testMiddleware(server, 'default.ejs'));
+      app.use(testMiddleware(server, 'material.ejs'));
     }
   }
 };

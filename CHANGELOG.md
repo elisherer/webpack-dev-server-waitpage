@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2020-10-28
+- Add `ignore` option to ignore certain urls or by request properties using function/s.
+- Change material theme colors and progress starts at 12 o'clock and continues clockwise.  
+- Add some unit tests
+
+## [2.0.1] - 2020-09-10
+- Try to fix peer dependency of webpack (v4 OR v5)
+
 ## [2.0.0] - 2020-08-24
 - Add support for webpack 5 (see the latest setup instructions, also relevant to the latest v4)
 
