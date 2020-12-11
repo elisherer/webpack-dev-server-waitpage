@@ -1,7 +1,7 @@
 {
   "name": "webpack-dev-server-waitpage",
   "description": "Webpack progress wait page for webpack-dev-server",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "lib/index.js",
   "repository": "https://github.com/elisherer/webpack-dev-server-waitpage.git",
   "author": "Eli Sherer <eli.sherer@gmail.com>",

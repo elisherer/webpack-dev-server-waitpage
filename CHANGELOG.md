@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.1] - 2020-12-11
+- Fix #23 - Cannot read property 'includes' of undefined when disableWhenValid = false
+
 ## [2.1.0] - 2020-10-28
 - Add `ignore` option to ignore certain urls or by request properties using function/s.
 - Change material theme colors and progress starts at 12 o'clock and continues clockwise.  
