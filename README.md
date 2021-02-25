@@ -41,8 +41,9 @@ const webpackDevServerWaitpage = require('webpack-dev-server-waitpage');
 
 **Note:** Arguments for the `plugin` method are the same as the object that can be passed to `ProgressPlugin` besides the `handler` function which is used internally (it is best to leave it blank).
 
-2 - Inside the `before` option function of `devServer` enter the following line as in the example below:
+2 - Inside the `before`/`onBeforeSetupMiddleware` (depending on which version of webpack-dev-server you are using) option function of `devServer` enter the following line as in the example below:
 
+webpack-dev-server@3
 ```js
 const webpackDevServerWaitpage = require('webpack-dev-server-waitpage');
 
@@ -53,6 +54,21 @@ const webpackDevServerWaitpage = require('webpack-dev-server-waitpage');
 
       // Be sure to pass the server argument from the arguments
       app.use(webpackDevServerWaitpage(server));
+
+    }
+  }
+```
+webpack-dev-server@4
+```js
+const webpackDevServerWaitpage = require('webpack-dev-server-waitpage');
+
+...
+
+  devServer: {
+    onBeforeSetupMiddleware: server => {
+
+      // Be sure to pass the server argument from the arguments
+      server.app.use(webpackDevServerWaitpage(server, { theme: "material" }));
 
     }
   }
