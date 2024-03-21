@@ -16,8 +16,8 @@ module.exports = {
     new SlowDownWebpackPlugin(1) // Amount of seconds to delay the completion of compilation
   ],
   devServer: {
-    before: (app, server) => {
-
+    onBeforeSetupMiddleware: (server) => {
+      const { app } = server;
       // Use this to test an actual usage (you can change the seconds setting below to get more time)
       app.use(webpackDevServerWaitpage(server, {
         //title: 'Development Server (Dev)',
